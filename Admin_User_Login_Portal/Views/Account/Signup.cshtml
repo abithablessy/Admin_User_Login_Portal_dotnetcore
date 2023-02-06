@@ -1,0 +1,77 @@
+﻿@model Admin_User_Login_Portal.Models.Userviewmodel
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<h1>SignUp</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Signup">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Confirmpassword" class="control-label"></label>
+                <input asp-for="Confirmpassword" type="password" class="form-control" />
+                <span asp-validation-for="Confirmpassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Female</label>
+             <input type="radio" asp-for="Gender" value="F" />
+                <label>Male</label>
+             <input type="radio" asp-for="Gender" value ="M" />
+             <span asp-validation-for="Gender" class="text-danger"></span>
+               
+            </div>
+            <div class="form-group form-check">
+                <input class="form-check-input" asp-for="Terms" />
+                <label class="form-check-label">
+                    
+                </label>
+                <span asp-validation-for="Terms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+<script>
+    jQuery.validator.unobtrusive.adapters.add("validatecheckbox",function(options){
+        if(options.element.tagName.toUppercase()=="INPUT" && options.element.type.toUppercase()=="CHECKBOX"){
+            options.rules["required"]=true;
+            if(options.message)
+            {
+                options.messages["required"] =options.message;
+            }
+        }
+    });
+</script>
+}

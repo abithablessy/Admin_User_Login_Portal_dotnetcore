@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Logout";
+}
+@if(string.IsNullOrEmpty(Context.Session.GetString("User"))||string.IsNullOrEmpty(Context.Session.GetString("Admin")))
+{
+    <h1>You have been logout successfully!</h1>
+}
+else
+{
+    <h1>Session Exist!</h1>
+}
+
+
+
